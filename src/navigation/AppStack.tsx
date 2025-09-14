@@ -8,12 +8,21 @@ const Stack = createNativeStackNavigator<AppStackNavigationType>();
 
 const AppStackNavigator = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName={ROUTES.WORKS_LIST}
-    >
-      <Stack.Screen name={ROUTES.WORKS_LIST} component={WorksList} />
-      <Stack.Screen name={ROUTES.WORKS_ITEM} component={WorksItem} />
+    <Stack.Navigator initialRouteName={ROUTES.WORKS_LIST}>
+      <Stack.Screen
+        name={ROUTES.WORKS_LIST}
+        component={WorksList}
+        options={{
+          headerTitle: 'Смены',
+        }}
+      />
+      <Stack.Screen
+        name={ROUTES.WORKS_ITEM}
+        component={WorksItem}
+        options={({ route }) => ({
+          headerTitle: route.params.item.companyName,
+        })}
+      />
     </Stack.Navigator>
   );
 };

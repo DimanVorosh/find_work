@@ -1,11 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { locationStore } from './location.store';
 import { worksApi } from '../api/work';
+import { WorkItem } from '../types/work.types';
 
 type LocationStoreType = typeof locationStore;
 
 export class WorksStore {
-  items: any[] = [];
+  items: WorkItem[] = [];
   error: string | null = null;
   isLoading: boolean = false;
 
@@ -27,10 +28,14 @@ export class WorksStore {
     });
 
     try {
-      const res = await worksApi.getWorks(this.location.coords);
+      const res = await worksApi.getWorks({
+        latitude: 45.039268,
+        longitude: 38.987221,
+      });
 
       runInAction(() => {
         this.items = res.data?.data ?? [];
+
         this.isLoading = false;
       });
     } catch (e: any) {

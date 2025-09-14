@@ -32,7 +32,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Нам нужны координаты, чтобы показать ближайшие смены.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Нам нужны координаты, чтобы показать ближайшие смены.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

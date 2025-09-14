@@ -1,10 +1,9 @@
 import api from './index';
-import { WorksListRequest } from '../types/request.types';
-import { WorkItem } from '../types/work.types';
+import { WorksListRequest, WorksListResponse } from '../types/request.types';
 
 export const worksApi = {
   getWorks: (data: WorksListRequest) => {
-    return api.get<WorkItem[]>(`/shifts/map-list-unauthorized`, {
+    return api.get<WorksListResponse>(`/shifts/map-list-unauthorized`, {
       params: {
         ...data,
       },

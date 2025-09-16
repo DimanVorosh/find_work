@@ -42,6 +42,22 @@ const WorksList: React.FC<IWorksListProps> = observer(({ navigation }) => {
     );
   }
 
+  if (worksStore.error) {
+    return (
+      <View style={styles.messageCenter}>
+        <Text>{worksStore.error}</Text>
+      </View>
+    );
+  }
+
+  if (worksStore.items.length === 0) {
+    return (
+      <View style={styles.messageCenter}>
+        <Text>Смен в вашем регионе не найдено</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <FlatList

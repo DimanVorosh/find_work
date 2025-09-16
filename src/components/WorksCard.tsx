@@ -8,14 +8,7 @@ interface IWorksCardProps {
 }
 
 const WorksCard: React.FC<IWorksCardProps> = ({ item, handlePress }) => {
-  const {
-    logo,
-    companyName,
-    address,
-    priceWorker,
-    customerFeedbacksCount,
-    customerRating,
-  } = item;
+  const { logo, companyName, address, priceWorker, workTypes } = item;
 
   const onPress = () => {
     handlePress(item);
@@ -28,16 +21,15 @@ const WorksCard: React.FC<IWorksCardProps> = ({ item, handlePress }) => {
           <Image style={styles.logo} source={{ uri: logo }} />
         </View>
         <View style={styles.cardInfo}>
-          <Text style={styles.companyName} numberOfLines={2}>
+          <Text style={styles.companyName} numberOfLines={1}>
             {companyName}
           </Text>
-          <Text style={styles.priceText}>Оплата: {priceWorker}₽</Text>
-          <Text style={styles.priceText}>
-            Рейтинг: ★{customerRating} / {customerFeedbacksCount}
+          <Text style={styles.text}>Оплата: {priceWorker}₽</Text>
+          <Text numberOfLines={2} style={[styles.text]}>
+            Профессия: {workTypes.length > 0 ? workTypes[0].name : 'Не указана'}
           </Text>
         </View>
       </View>
-
       <Text numberOfLines={2} style={styles.addressContainer}>
         <Text style={styles.addressTitle}>Адрес: </Text>
         <Text style={styles.addressText}>{address}</Text>
@@ -59,16 +51,14 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 8,
     resizeMode: 'contain',
-    backgroundColor: 'white',
   },
   cardContentTop: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  priceText: {
+  text: {
     fontSize: 16,
     fontWeight: '500',
-    marginVertical: 2,
   },
   companyName: {
     fontSize: 18,

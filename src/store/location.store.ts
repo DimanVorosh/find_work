@@ -72,9 +72,10 @@ class LocationStore {
           });
         },
         {
-          enableHighAccuracy: true,
-          timeout: 12000,
+          enableHighAccuracy: Platform.OS === 'ios',
+          timeout: 15000,
           maximumAge: 0,
+          forceLocationManager: true,
         },
       );
     } catch (error: any) {

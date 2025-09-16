@@ -29,8 +29,8 @@ export class WorksStore {
 
     try {
       const res = await worksApi.getWorks({
-        latitude: 45.039268,
-        longitude: 38.987221,
+        latitude: this.location.coords.latitude,
+        longitude: this.location.coords.longitude,
       });
 
       runInAction(() => {
